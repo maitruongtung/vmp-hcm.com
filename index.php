@@ -10,7 +10,7 @@ ob_start();
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
-	<title>VMP & HCM</title>
+	<title>SMB & HCM</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<link rel="stylesheet" href="style/jquery-ui/jquery-ui.min.css">
 	<link rel="stylesheet" href="bootstrap/css/bootstrap.min.css">
@@ -179,6 +179,9 @@ ob_start();
 					case 'book-del':
 						include_once("include/booking-delete.php");
 						break;
+					case 'formtimkiemnhanh':
+						include_once("include/tk.php");
+						break;
 
 					case 'logout':
 						session_destroy();
@@ -194,7 +197,8 @@ ob_start();
 		</div>
 
       <footer class="footer">
-        <p>&copy; <?php echo date('Y'); ?> VMP-HCM</p>
+        <p>&copy; <?php echo date('Y'); ?> SMB-HCM</p>
+		
       </footer>
 
     </div> <!-- /container -->
