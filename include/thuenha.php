@@ -163,6 +163,12 @@ body,td,th {
 	 <label>
           <input name="gioithieu[]" type="checkbox" value="Mặt bằng lối đi chung"> Mặt bằng lối đi chung
         </label>
+	<label>
+          <input name="gioithieu[]" type="checkbox" value="Bán bất động sản"> Bán bất động sản
+        </label>
+	<label>
+          <input name="gioithieu[]" type="checkbox" value="Sang nhượng"> Sang nhượng
+        </label>
       </div>
       <input name="gioithieu[]" type="text" class="form-control" id="gioithieu" placeholder="Khác">
     </div>

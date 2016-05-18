@@ -41,6 +41,7 @@
   		$ngay_den	= isset($_REQUEST['ngay_den']) ?  $_REQUEST['ngay_den'] : "";
   		$city 		= isset($_REQUEST['city']) ?  $_REQUEST['city'] : "";
   		$district 	= isset($_REQUEST['district']) ? $_REQUEST['district'] : "";
+  		$sonha 		= isset($_REQUEST['sonha']) ? $_REQUEST['sonha'] : '';
   		$town 		= isset($_REQUEST['town']) ? $_REQUEST['town'] : "";
   		$street 	= isset($_REQUEST['street']) ? $_REQUEST['street'] : "";
 		$loaidat 	= isset($_REQUEST['loaidat']) ? $_REQUEST['loaidat'] : '';
@@ -77,6 +78,9 @@
 		}
 		if ($street != ''){
 			$qbSearch .= " AND duong = {$street}";
+		}
+		if ($sonha != ''){
+			$qbSearch .= " AND sonha LIKE '%{$sonha}%'";
 		}
 		//
 		if ($loaidat != ''){

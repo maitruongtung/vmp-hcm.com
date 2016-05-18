@@ -8,10 +8,6 @@
 <body>
   
 <?php
-  if (!isset($_SESSION['username']) || $_SESSION['level'] != 2 ) {
-    echo '<div class="alert alert-danger" role="alert">Bạn không có quyền thao tác tính năng này!</div>';
-    die();
-  }
 
   $qbCity = mysql_query("SELECT * FROM city");
   $rsCity = array();
@@ -68,12 +64,17 @@
         $sql = "SELECT * FROM thuenha ORDER BY id DESC";
         // Phan trang
         $maxItem = mysql_num_rows(mysql_query($sql)); // Tong so dong
-        $itemOnPage = 10; // So dong tren 1 trang
+        $itemOnPage = 50; // So dong tren 1 trang
         $pageNum = ceil($maxItem/$itemOnPage);
         if (isset($_REQUEST['page'])){
           $page = $_REQUEST['page'];
+        }else{
+          $page = 1;
+        }
+
+        if ($page != '') {
           $limit = ($page-1) * $itemOnPage;
-          $sql .= " LIMIT {$limit}, $itemOnPage";
+            $sql .= " LIMIT {$limit}, $itemOnPage";
         }
         // END.Phan trang
         // thực thi câu $sql với biến conn lấy từ file connection.php

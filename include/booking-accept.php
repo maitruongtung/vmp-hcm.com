@@ -81,7 +81,7 @@ acceptStatus;
  		//die($sql);
  		//
 	 	mysql_query($sql);
-	 	header('Location: index.php?act=' . $actRedirect);
+	 	header('Location: index.php?act=' . $actRedirect . '&id=' . $id);
 	}
 
 	//Load city

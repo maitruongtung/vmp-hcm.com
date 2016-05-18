@@ -63,10 +63,14 @@ $sql .= " GROUP BY T.id ORDER BY T.id DESC";
 
 // Phan trang
 $maxItem = mysql_num_rows(mysql_query($sql)); // Tong so dong
-$itemOnPage = 10; // So dong tren 1 trang
+$itemOnPage = 50; // So dong tren 1 trang
 $pageNum = ceil($maxItem/$itemOnPage);
 if (isset($_REQUEST['page'])){
   $page = $_REQUEST['page'];
+}else{
+  $page = 1;
+}
+if ($page != ''){
   $limit = ($page-1) * $itemOnPage;
   $sql .= " LIMIT {$limit}, $itemOnPage";
 }
@@ -90,14 +94,16 @@ if (isset($_REQUEST['page'])){
     <div class="col-xs-3">
       
 	  </div>
-    <div class="col-xs-9 text-right">
-       <h3 align="center"><font size="+1" >
+    <div class="col-xs-9 ">
+       <h3 align="left"><font size="+1" >
         Danh sách booking hôm nay ngày: 
         <span style="color: red;"><?php echo  $ngaythangnam; ?></span> 
-        Tổng cộng: <span style="color: red;"><?php echo $maxItem;?></span>
+        Tổng cộng: <span style="color: red;"><?php echo $maxItem;?></span>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+ <a class="btn btn-default" href="index.php?act=formtimkiemnhanh&username=<?php echo $username; ?>" role="button">Tìm Chính Xác</a>
       </font> </h3>
     </div>
-	  
+	 
     <table class="table table-bordered table-striped">
       <caption> </caption>
       <thead>
@@ -150,7 +156,7 @@ if (isset($_REQUEST['page'])){
 	  
             <td><p><?php echo $data["tencuaban"]; ?></p><small><b>DD:</b> <?php echo $data["didong"]; ?></small><br>SDT chủ nhà:<?php echo $data["sdtchunha"]; ?></td>
 
-            <td align="center"><?php echo $data["ketquadauvao"]; ?></td>
+            <td align="center"><?php echo $data["ketquadauvao"]; ?><br>Ngày:<?php echo ($data["ngaybook"]) ? date('d-m-Y', $data["ngaybook"]) : ''; ?></td>
 
             <td>
               <?php 
@@ -246,7 +252,7 @@ if (isset($_REQUEST['page'])){
   </div>
 </div><!-- /.container -->
 <a href="index.php?act=cus-report&username=<?php echo $username; ?>" class="search" style="margin-left:10px;">Tìm kiếm</a>
-<a href="index.php?act=formtimkiemnhanh&username=<?php echo $username; ?>" class="search" style="margin-left:10px;">Tìm kiếm chính xác</a>
+
 <a href="#" data-value="<?php echo $_SERVER['REQUEST_URI']; ?>" class="export-excel" style="margin-left:10px;">Tải về</a>
 <iframe id="ifm-export-excel" src="" style="display:none; width:100%; "></iframe>
 <script type="text/javascript">

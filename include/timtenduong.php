@@ -35,6 +35,7 @@
   		$district 	= isset($_REQUEST['district']) ? $_REQUEST['district'] : '';
   		$town 		= isset($_REQUEST['town']) ? $_REQUEST['town'] : '';
   		$street 	= isset($_REQUEST['street']) ? $_REQUEST['street'] : '';
+  		$sonha 		= isset($_REQUEST['sonha']) ? $_REQUEST['sonha'] : '';
 		$loaidat 	= isset($_REQUEST['loaidat']) ? $_REQUEST['loaidat'] : '';
 		$googlemap 	= isset($_REQUEST['googlemap']) ? $_REQUEST['googlemap'] : '';
 		$username 	= isset($_REQUEST['username']) ? $_REQUEST['username'] : '';
@@ -71,6 +72,9 @@
 		}
 		if ($street != ''){
 			$qbSearch .= " AND duong = {$street}";
+		}
+		if ($sonha != ''){
+			$qbSearch .= " AND sonha LIKE '%{$sonha}%'";
 		}
 		//
 		if ($loaidat != ''){
@@ -130,6 +134,7 @@
 						<th>Offsite</th>
 						<th>Lý Do</th>
 						<th>Thẩm định Offsite</th>
+						<th>Username</th>
 						
 					
 					</tr>
@@ -156,6 +161,7 @@
 						<td>{$row["loaidat"]}</td>
 						<td>{$row["lydo"]}</td>
 						<td>{$row["nhanvienphutrach"]}</td>
+						<td>{$row["username"]}</td>
 						
 					</tr>";
 			}
